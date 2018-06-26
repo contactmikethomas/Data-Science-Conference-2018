@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="refresh" content="20" >
+<head>
+<title>Cluster {{cluster_number}} Statistics</title>
+
+<style>
+
+table {  
+    color: #333;
+    font-family: Helvetica, Arial, sans-serif; /* Nicer font */ 
+    border-collapse: 
+    collapse; border-spacing: 0; 
+}
+
+td, th { border: 1px solid #CCC; height: 30px; } /* Make cells a bit taller */
+
+th {
+    background: #F3F3F3; /* Light grey background */
+    font-weight: bold; /* Make sure they're bold */
+    font-size:30px;
+}
+
+td {  
+    background: #FAFAFA; /* Lighter grey background */
+    text-align: left; /* Center our text */
+    padding: 20px;
+    font-size: 15px;
+}
+
+font {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+</style>
+
+</head>
+<body>
+<br>
+<font size="60"><b>Cluster {{cluster_number}} Statistics</b></font> 
+<br>
+<br>
+<table>
+	<tr><th>Cluster Word Cloud</th><th>Cluster Event Frequency</th><th>Example Record (Truncated)</th></tr>
+	<tr><td rowspan="2"><img src="{{pic1}}"></td><td rowspan="2">{{script|safe}}</td><td>{{text[0:3000]}}</td></tr>
+	<tr><td>There have been <b>{{n}}</b> events in <b>Cluster {{cluster_number}}</b>.<br><br><br>
+
+Example Cluster Events: <br>
+<ul> {%for example in examples:%}
+<li><a href="{{example}}" target="_blank">{{example}}</a></li>
+{%endfor%}
+</ul>
+</td></tr>
+
+</table>
+
+</body>
+</html>

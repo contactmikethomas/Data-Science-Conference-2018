@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Events for {{word}}</title>
+</head>
+<body>
+<br>
+
+<style>
+
+table {  
+    color: #333;
+    font-family: Helvetica, Arial, sans-serif; /* Nicer font */ 
+    border-collapse: 
+    collapse; border-spacing: 0; 
+}
+
+td, th { border: 1px solid #CCC; height: 30px; } /* Make cells a bit taller */
+
+th {
+    background: #F3F3F3; /* Light grey background */
+    font-weight: bold; /* Make sure they're bold */
+    font-size:30px;
+}
+
+td {  
+    background: #FAFAFA; /* Lighter grey background */
+    text-align: left; /* Center our text */
+    padding: 20px;
+    font-size: 15px;
+}
+
+font {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+</style>
+
+
+<div class="centered">
+<table style="width:100%">
+<tr><th colspan="2">Events containing "{{word}}"</th></tr>
+<tr><th>Link</th><th>Truncated Content</th></tr>
+  {% if records: %}
+	{%for i in range(records_n):%}
+		<tr><td><a href="{{records[i][0]}}" target="_blank">{{records[i][0]}}</a></td><td>{{records[i][1][0:3000]}}</td></tr>
+	{%endfor%}
+  {% else %}
+    <tr><td>No Entries</td><td>No Entries</td></tr>
+  {% endif %}
+
+</table> 
+</div>
+<br>
+</body>
+</html>
+
+

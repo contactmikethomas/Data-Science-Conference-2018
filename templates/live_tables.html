@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<meta http-equiv="refresh" content="2" >
+<head>
+<title>Live view of AWS Tables</title>
+
+<style>
+div {
+    max-width: 1400px;
+    margin: auto;
+}
+
+table {  
+    color: #333;
+    font-family: Helvetica, Arial, sans-serif; /* Nicer font */ 
+    border-collapse: 
+    collapse; border-spacing: 0; 
+}
+
+td, th { border: 1px solid #CCC; height: 30px; } /* Make cells a bit taller */
+
+th {  
+    background: #F3F3F3; /* Light grey background */
+    font-weight: bold; /* Make sure they're bold */
+}
+
+td {  
+    background: #FAFAFA; /* Lighter grey background */
+    text-align: left; /* Center our text */
+}
+</style>
+</head>
+<body>
+<br>
+<br>
+<br>
+<div class="centered">
+<table style="width:100%">
+<tr><th colspan="2">Pages Waiting to Be Scraped</th></tr>
+<tr><th>Link</th><th>Time Scraped</th></tr>
+  {% if to_scrape: %}
+	{%for i in range(0,to_scrape|length):%}
+		<tr><td>{{to_scrape[i][0]}}</td><td>{{to_scrape[i][1]}}</td></tr>
+	{%endfor%}
+  {% else %}
+    <tr><td>No Entries</td><td>No Entries</td></tr>
+  {% endif %}
+
+</table> 
+</div>
+<br>
+<br>
+<br>
+<div class="centered">
+<table style="width:100%">
+<tr><th colspan="2">Pages That Have Been Scraped</th></tr>
+<tr><th>Link</th><th>Truncated Content (Hex)</th></tr>
+  {% if scraped: %}
+	{%for i in range(scraped_n):%}
+		<tr><td>{{scraped[i][0]}}</td><td>{{scraped[i][2][0:100]}}</td></tr>
+	{%endfor%}
+  {% else %}
+    <tr><td>No Entries</td><td>No Entries</td></tr>
+  {% endif %}
+
+</table> 
+</div>
+<br>
+<br>
+<br>
+<div class="centered">
+<table style="width:100%">
+<tr><th>Event Rate (Last Hour)</th><th>Live Cluster Breakdown</th></tr>
+<tr><th>{{script|safe}}</th><th><img src="http://localhost:8080/pie"></th></tr>
+</table> 
+</div>
+</body>
+</html>

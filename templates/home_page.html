@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="refresh" content="20" >
+<head>
+<title>Live Clustering Home</title>
+
+<style>
+div {
+    max-width: 1400px;
+    margin: auto;
+}
+
+table {  
+    color: #333;
+    font-family: Helvetica, Arial, sans-serif; /* Nicer font */ 
+    border-collapse: 
+    collapse; border-spacing: 0; 
+}
+
+td, th { border: 1px solid #CCC; height: 30px; } /* Make cells a bit taller */
+
+th {
+    background: #F3F3F3; /* Light grey background */
+    font-weight: bold; /* Make sure they're bold */
+    font-size:30px;
+}
+
+td {  
+    background: #FAFAFA; /* Lighter grey background */
+    text-align: left; /* Center our text */
+    padding: 20px;
+    font-size: 20px;
+}
+
+</style>
+
+</head>
+<body>
+<table>
+	<tr><th><a href="http://localhost:8080/cluster1" target="_blank">Cluster 1</a></th><th><a href="http://localhost:8080/cluster2" target="_blank">Cluster 2</a></th><th><a href="http://localhost:8080/cluster3" target="_blank">Cluster 3</a></th></tr>
+	<tr><td>{{scripts[0]|safe}}</td><td>{{scripts[1]|safe}}</td><td>{{scripts[2]|safe}}</td></tr>
+	<tr><th><a href="http://localhost:8080/cluster4" target="_blank">Cluster 4</a></th><th><a href="http://localhost:8080/cluster5" target="_blank">Cluster 5</a></th><th>Business Rules Events</th></tr>
+	<tr><td>{{scripts[3]|safe}}</td><td>{{scripts[4]|safe}}</td>
+<td><br>There have been <b>{{total}}</b> high risk events today. 
+<br> 
+<br>
+Last Five Events: <br>
+<ul> {%for flag in flags:%}
+<li><a href="{{flag[0]}}" target="_blank">{{flag[0]}}</a></li>
+{%endfor%}
+</ul>
+<br>
+<br>The system has scanned and clustered <b>{{grand_total}}</b> events today.
+<br>
+<br>
+<br><a href="http://localhost:8080/live_tables" target="_blank">Live database monitoring</a>
+
+
+</td></tr>
+</table>
+
+</body>
+</html>
